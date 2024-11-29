@@ -7,7 +7,10 @@ const CurrencyConverter = () => {
   const [targetCurrency, setTargetCurrency] = useState("USD");
   const [amount, setAmount] = useState("");
   const [convertedAmount, setConvertedAmount] = useState("");
-  const apiUrl = "http://localhost:1000/api";
+  const apiUrl =
+    window.location.hostname === "localhost"
+      ? "http://localhost:1000/api"
+      : "https://blaze-backend-34wl.onrender.com/api";
 
   const handleSubmit = async (e) => {
     try {

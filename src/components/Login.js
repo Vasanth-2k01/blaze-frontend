@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookie from "js-cookie";
-import "./Login.css"; 
+import "./Login.css";
 
 const Login = () => {
-  const apiUrl = "http://localhost:1000/api";
+  const apiUrl =
+    window.location.hostname === "localhost"
+      ? "http://localhost:1000/api"
+      : "https://blaze-backend-34wl.onrender.com/api";
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -16,17 +20,16 @@ const Login = () => {
       console.log("Email:", email);
       console.log("Password:", password);
 
-    let loginUser = await axios.post(`${apiUrl}/login`, {
+      let loginUser = await axios.post(`${apiUrl}/login`, {
         email: email,
         password: password,
       });
 
       if (loginUser.status) {
-        localStorage.setItem('token', loginUser.headers.access_token);
+        localStorage.setItem("token", loginUser.headers.access_token);
         Cookie.set("token", loginUser.headers.access_token);
         navigate("/currency-conversion-history");
-      }else{
-
+      } else {
       }
       console.log(loginUser, "loginUser");
     } catch (error) {

@@ -6,7 +6,10 @@ import "./CurrencyConversionHistory.css";
 const CurrencyConversionHistory = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState([]);
-  const apiUrl = "http://localhost:1000/api";
+  const apiUrl =
+    window.location.hostname === "localhost"
+      ? "http://localhost:1000/api"
+      : "https://blaze-backend-34wl.onrender.com/api";
   const [currencyConversionHistory, setcurrencyConversionHistory] = useState(
     {}
   );
