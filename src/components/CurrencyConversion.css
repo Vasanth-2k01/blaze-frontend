@@ -71,3 +71,12 @@
     background-color: #218838;
   }
   
+  .button-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+  }
+  
+  .button-container button {
+    flex: 1;
+  }
