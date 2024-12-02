@@ -12,7 +12,8 @@ const CurrencyConverter = () => {
   const apiUrl =
     window.location.hostname === "localhost"
       ? "http://localhost:1000/api"
-      : "https://blaze-backend-34wl.onrender.com/api";
+      : 
+      "https://blaze-backend-node.onrender.com/api";
 
   const handleSubmit = async (e) => {
     try {
